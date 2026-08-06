@@ -14,6 +14,7 @@ import application.controller.ParkingSpaceController;
 import application.controller.ReservationController;
 
 import application.view.CarView;
+import application.view.ParkingSpaceView;
 
 import application.model.Car;
 import application.model.ParkingSpace;
@@ -43,10 +44,11 @@ public class Main {
 		CarView.DisplayCar(cars.get(0));
 		CarView.DisplayCars(cars);
 		
-		
+		/*
 		for(Car car : cars){
 			System.out.println(car.GetLicensePlate()+", "+car.GetCanUseHandicappedSpace()+", "+car.GetCanUseElectricSpace());
 		}
+		*/
 		
 		//car_controller.DeleteCar("asd-012");
 		
@@ -56,6 +58,12 @@ public class Main {
 		//parking_space_controller.AddParkingSpace(ParkingSpace.ParkingSpaceType.NORMAL);
 		
 		List<ParkingSpace> parking_spaces = parking_space_controller.ListParkingSpaces();
+		
+		ParkingSpaceView.DisplayParkingSpaces(parking_spaces);
+		
+		ParkingSpaceView.grid_width = 4;
+		ParkingSpaceView.DisplayParkingSpaces(parking_spaces);
+		
 		
 		for(ParkingSpace parking_space : parking_spaces){
 			System.out.println(parking_space.GetId()+", "+parking_space.GetType());
