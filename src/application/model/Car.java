@@ -17,6 +17,10 @@ public class Car {
 	}
 	
 	
+	public int GetId() {
+		return this.id;
+	}
+	
 	public String GetLicensePlate() {
 		return this.license_plate;
 	}

@@ -24,6 +24,26 @@ public class Reservation {
 	}
 	
 	
+	public int GetId() {
+		return this.id;
+	}
+	
+	public LocalDateTime GetStartTime() {
+		return this.start_time;
+	}
+	
+	public LocalDateTime GetEndTime() {
+		return this.end_time;
+	}
+	
+	public Car GetReservator() {
+		return this.reservator;
+	}
+	
+	public ParkingSpace GetParkingSpace() {
+		return this.parking_space;
+	}
+	
 	
 }
 
