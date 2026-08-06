@@ -26,7 +26,7 @@ public class ParkingSpaceDAO {
 	}
 	
 	
-	public void DeleteParkingSpace(ParkingSpace parking_space) {
+	public void DeleteParkingSpace(int id) {
 		
 	}
 	

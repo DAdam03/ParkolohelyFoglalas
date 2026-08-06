@@ -17,6 +17,18 @@ public class Car {
 	}
 	
 	
+	public String GetLicensePlate() {
+		return this.license_plate;
+	}
+	
+	public boolean GetCanUseHandicappedSpace() {
+		return this.can_use_handicapped_space;
+	}
+	
+	public boolean GetCanUseElectricSpace() {
+		return this.can_use_electric_space;
+	}
+	
 }
 
 

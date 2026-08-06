@@ -44,7 +44,7 @@ public class ReservationDAO {
 	}
 	
 	
-	public void DeleteReservation(Reservation reservation) {
+	public void DeleteReservation(int id) {
 		
 	}
 	
