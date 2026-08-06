@@ -13,6 +13,8 @@ import application.controller.CarController;
 import application.controller.ParkingSpaceController;
 import application.controller.ReservationController;
 
+import application.view.CarView;
+
 import application.model.Car;
 import application.model.ParkingSpace;
 import application.model.Reservation;
@@ -33,20 +35,25 @@ public class Main {
 		
 		CarController car_controller = CarController.GetInstance();
 		
-		car_controller.AddCar("asd-012", true, true);
+		//car_controller.AddCar("asd-012", true, true);
 		
 		List<Car> cars = car_controller.ListCars();
+		
+		
+		CarView.DisplayCar(cars.get(0));
+		CarView.DisplayCars(cars);
+		
 		
 		for(Car car : cars){
 			System.out.println(car.GetLicensePlate()+", "+car.GetCanUseHandicappedSpace()+", "+car.GetCanUseElectricSpace());
 		}
 		
-		car_controller.DeleteCar("asd-012");
+		//car_controller.DeleteCar("asd-012");
 		
 		
 		ParkingSpaceController parking_space_controller = ParkingSpaceController.GetInstance();
 		
-		parking_space_controller.AddParkingSpace(ParkingSpace.ParkingSpaceType.NORMAL);
+		//parking_space_controller.AddParkingSpace(ParkingSpace.ParkingSpaceType.NORMAL);
 		
 		List<ParkingSpace> parking_spaces = parking_space_controller.ListParkingSpaces();
 		
@@ -54,7 +61,7 @@ public class Main {
 			System.out.println(parking_space.GetId()+", "+parking_space.GetType());
 		}
 		
-		parking_space_controller.DeleteParkingSpace(15);
+		//parking_space_controller.DeleteParkingSpace(15);
 		
 		
 		
@@ -62,7 +69,7 @@ public class Main {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		
-		reservation_controller.AddReservation(LocalDateTime.parse("2026-09-01 00:00:00", formatter), LocalDateTime.parse("2026-09-01 10:00:00", formatter), cars.get(0), parking_spaces.get(0));
+		//reservation_controller.AddReservation(LocalDateTime.parse("2026-09-01 00:00:00", formatter), LocalDateTime.parse("2026-09-01 10:00:00", formatter), cars.get(0), parking_spaces.get(0));
 		
 		List<Reservation> reservations = reservation_controller.ListReservations();
 		
@@ -98,7 +105,7 @@ public class Main {
 		}
 		
 		
-		reservation_controller.DeleteReservation(10);
+		//reservation_controller.DeleteReservation(10);
 		
 		
 		
