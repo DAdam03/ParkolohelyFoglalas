@@ -41,6 +41,7 @@ public class CarDAO {
 	}
 	
 	
+	
 	public List<Car> ListCars() {
 		List<Car> result = new ArrayList<Car>();
 		
@@ -62,8 +63,18 @@ public class CarDAO {
 	}
 	
 	
-	public void DeleteCar(int id) {
-		
+	public void DeleteCar(String license_plate) {
+		try(Connection connection       = Database.GetConnection();
+			PreparedStatement statement = connection.prepareStatement("Delete from cars where license=?;"))
+		{
+			
+			statement.setString(1, license_plate);
+			
+			int deleted_rows = statement.executeUpdate();
+			
+		}catch(Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 	
 }

@@ -48,8 +48,8 @@ public class CarController {
 	
 	
 	
-	public void DeleteCar(int id) {
-		
+	public void DeleteCar(String license) {
+		car_dao.DeleteCar(license);
 	}
 	
 	

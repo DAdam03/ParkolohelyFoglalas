@@ -7,8 +7,10 @@ import java.util.List;
 import application.dao.DatabaseInitializer;
 
 import application.controller.CarController;
+import application.controller.ParkingSpaceController;
 
 import application.model.Car;
+import application.model.ParkingSpace;
 
 
 public class Main {
@@ -33,6 +35,23 @@ public class Main {
 		for(Car car : cars){
 			System.out.println(car.GetLicensePlate()+", "+car.GetCanUseHandicappedSpace()+", "+car.GetCanUseElectricSpace());
 		}
+		
+		car_controller.DeleteCar("asd-012");
+		
+		
+		ParkingSpaceController parking_space_controller = ParkingSpaceController.GetInstance();
+		
+		parking_space_controller.AddParkingSpace(ParkingSpace.ParkingSpaceType.NORMAL);
+		
+		List<ParkingSpace> parking_spaces = parking_space_controller.ListParkingSpaces();
+		
+		for(ParkingSpace parking_space : parking_spaces){
+			System.out.println(parking_space.GetId()+", "+parking_space.GetType());
+		}
+		
+		parking_space_controller.DeleteParkingSpace(15);
+		
+		
 		
 	}
 	
