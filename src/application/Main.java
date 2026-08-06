@@ -15,6 +15,7 @@ import application.controller.ReservationController;
 
 import application.view.CarView;
 import application.view.ParkingSpaceView;
+import application.view.ReservationView;
 
 import application.model.Car;
 import application.model.ParkingSpace;
@@ -64,10 +65,11 @@ public class Main {
 		ParkingSpaceView.grid_width = 4;
 		ParkingSpaceView.DisplayParkingSpaces(parking_spaces);
 		
-		
+		/*
 		for(ParkingSpace parking_space : parking_spaces){
 			System.out.println(parking_space.GetId()+", "+parking_space.GetType());
 		}
+		*/
 		
 		//parking_space_controller.DeleteParkingSpace(15);
 		
@@ -80,6 +82,10 @@ public class Main {
 		//reservation_controller.AddReservation(LocalDateTime.parse("2026-09-01 00:00:00", formatter), LocalDateTime.parse("2026-09-01 10:00:00", formatter), cars.get(0), parking_spaces.get(0));
 		
 		List<Reservation> reservations = reservation_controller.ListReservations();
+		
+		ReservationView.DisplayReservations(reservations);
+		
+		
 		
 		for(Reservation reservation : reservations){
 			System.out.println(reservation.GetId()+", "+reservation.GetStartTime().format(formatter)+", "+reservation.GetEndTime().format(formatter)+", "+reservation.GetReservator().GetId()+", "+reservation.GetReservator().GetLicensePlate()+", "+reservation.GetReservator().GetCanUseHandicappedSpace()+", "+reservation.GetReservator().GetCanUseElectricSpace()+", "+reservation.GetParkingSpace().GetId()+", "+reservation.GetParkingSpace().GetType());
