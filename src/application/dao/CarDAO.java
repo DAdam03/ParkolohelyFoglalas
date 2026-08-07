@@ -1,6 +1,8 @@
 package application.dao;
 
 
+import org.sqlite.SQLiteException;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -36,7 +38,7 @@ public class CarDAO {
 			
 			inserted_rows = statement.executeUpdate();
 			
-		}catch(SQLIntegrityConstraintViolationException e){
+		}catch(SQLiteException e){
 			// @Hack
 			System.out.println("Mar letezik ilyen rendszamu auto.");
 		}catch(Exception exception) {

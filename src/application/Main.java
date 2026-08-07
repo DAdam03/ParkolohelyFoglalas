@@ -23,6 +23,8 @@ import application.model.Car;
 import application.model.ParkingSpace;
 import application.model.Reservation;
 
+import application.test.TestMain;
+
 
 public class Main {
 	
@@ -49,6 +51,8 @@ public class Main {
 	public static Car user           = null;
 	public static boolean admin_user = false;
 	
+	public static boolean run_tests  = false;
+	
 	
 	public static void main(String[] args){
 		
@@ -58,6 +62,11 @@ public class Main {
 			
 		} catch(Exception exception) {
 			exception.printStackTrace();
+		}
+		
+		
+		if(run_tests){
+			TestMain.RunTests();
 		}
 		
 		
@@ -498,9 +507,22 @@ public class Main {
 									}
 									
 									if(can_make_reservation){
-										reservation_controller.AddReservation(start_time, end_time, car, parking_space);
 										
-										System.out.println("Foglalas sikeresen letrehozva!");
+										if(parking_space.GetType() == ParkingSpace.ParkingSpaceType.HANDICAPPED && !car.GetCanUseHandicappedSpace()){
+											System.out.println("Ez az auto nem parkolhat mozgaskorlatozott parkolohelyre.");
+											can_make_reservation = false;
+										}
+										
+										if(parking_space.GetType() == ParkingSpace.ParkingSpaceType.ELECTRIC && !car.GetCanUseElectricSpace()){
+											System.out.println("Ez az auto nem parkolhat elektromos parkolohelyre.");
+											can_make_reservation = false;
+										}
+										
+										if(can_make_reservation){
+											reservation_controller.AddReservation(start_time, end_time, car, parking_space);
+											
+											System.out.println("Foglalas sikeresen letrehozva!");
+										}
 									}
 								}
 							}else{

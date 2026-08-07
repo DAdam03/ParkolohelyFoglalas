@@ -43,7 +43,9 @@ public class ReservationController {
 			List<Reservation> reservations_by_car = reservation_dao.ListReservationsByTimePeriodAndCar(start_time, end_time, reservator);
 			
 			if(reservations_at_space.size() == 0 && reservations_by_car.size() == 0){
-				reservation_dao.InsertReservation(reservation);
+				if(parking_space.GetType() == ParkingSpace.ParkingSpaceType.NORMAL || (parking_space.GetType() == ParkingSpace.ParkingSpaceType.HANDICAPPED && reservator.GetCanUseHandicappedSpace()) || (parking_space.GetType() == ParkingSpace.ParkingSpaceType.ELECTRIC && reservator.GetCanUseElectricSpace())){
+					reservation_dao.InsertReservation(reservation);
+				}
 			}
 		}
 	}
