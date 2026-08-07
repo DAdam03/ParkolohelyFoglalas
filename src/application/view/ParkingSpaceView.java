@@ -54,6 +54,21 @@ public class ParkingSpaceView {
 	}
 	
 	
+	public static ParkingSpace GetParkingSpaceByColumnAndRow(int column, int row) {
+		ParkingSpace result = null;
+		
+		ParkingSpaceController parking_space_controller = ParkingSpaceController.GetInstance();
+		List<ParkingSpace> parking_spaces = parking_space_controller.ListParkingSpaces();
+		
+		int index = row*grid_width + column;
+		if(column < grid_width && column > -1 && row > -1 && index < parking_spaces.size()){
+			result = parking_spaces.get(index);
+		}
+		
+		return result;
+	}
+	
+	
 }
 
 

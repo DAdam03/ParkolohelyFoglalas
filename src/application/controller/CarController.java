@@ -33,11 +33,23 @@ public class CarController {
 	
 	
 	
-	public void AddCar(String license_plate, boolean can_use_handicapped_space, boolean can_use_electric_space) {
+	public Car AddCar(String license_plate, boolean can_use_handicapped_space, boolean can_use_electric_space) {
 		Car car = new Car(0, license_plate, can_use_handicapped_space, can_use_electric_space);
 		
-		car_dao.InsertCar(car);
+		int inserted_cars = car_dao.InsertCar(car);
 		
+		Car result = null;
+		
+		if(inserted_cars > 0){
+			result = car_dao.GetCarByLicensePlate(license_plate);
+		}
+		
+		return result;
+	}
+	
+	
+	public Car GetCarByLicensePlate(String license_plate) {
+		return car_dao.GetCarByLicensePlate(license_plate);
 	}
 	
 	
@@ -48,8 +60,8 @@ public class CarController {
 	
 	
 	
-	public void DeleteCar(String license) {
-		car_dao.DeleteCar(license);
+	public int DeleteCar(String license) {
+		return car_dao.DeleteCar(license);
 	}
 	
 	

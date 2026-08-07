@@ -36,8 +36,16 @@ public class ReservationController {
 	public void AddReservation(LocalDateTime start_time, LocalDateTime end_time, Car reservator, ParkingSpace parking_space) {
 		Reservation reservation = new Reservation(0, start_time, end_time, reservator, parking_space);
 		
-		reservation_dao.InsertReservation(reservation);
-		
+		if(start_time.compareTo(end_time) <= 0){
+			
+			List<Reservation> reservations_at_space = reservation_dao.ListReservationsByTimePeriodAndSpace(start_time, end_time, parking_space);
+			
+			List<Reservation> reservations_by_car = reservation_dao.ListReservationsByTimePeriodAndCar(start_time, end_time, reservator);
+			
+			if(reservations_at_space.size() == 0 && reservations_by_car.size() == 0){
+				reservation_dao.InsertReservation(reservation);
+			}
+		}
 	}
 	
 	
